@@ -1,0 +1,10 @@
+.sign-in-wrapper {
+    min-height: 100vh;
+    background-color: #2a2a72;
+    background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+}
+
+.sign-in-wrap {
+    min-height: 300px;
+    background-color: #fff;
+}
