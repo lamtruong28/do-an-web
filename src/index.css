@@ -13,6 +13,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -23,7 +27,32 @@ code {
   --bg-primary: #eec0c6;
 }
 
+p,
+span {
+  font-size: 1.6rem;
+}
+
+h1 {
+  font-size: 3.6rem;
+}
+
+h2 {
+  font-size: 3.2rem;
+}
+
 /* Base CSS */
+.fw-bold {
+  font-weight: bold;
+}
+
+.fw-normal {
+  font-weight: normal;
+}
+
+.text-center {
+  text-align: center;
+}
+
 .p-4 {
   padding: 4px;
 }
@@ -226,6 +255,41 @@ code {
 
 .rounded {
   border-radius: 5px;
+}
+
+.btn {
+  padding: 10px 16px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 1.4rem;
+  text-decoration: none;
+  user-select: none;
+}
+
+.btn.disable {
+  opacity: 0.7;
+  cursor: no-drop;
+}
+
+.btn-sm {
+  padding: 8px;
+  font-size: 1.3rem;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #0d6efd;
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+}
+
+.btn-secondary {
+  color: #fff;
+  background-color: #6c757d;
 }
 
 /* flexbox */
