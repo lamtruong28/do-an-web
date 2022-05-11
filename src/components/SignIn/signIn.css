@@ -8,3 +8,42 @@
     min-height: 300px;
     background-color: #fff;
 }
+
+.sign-in__item {
+    position: relative;
+}
+
+.sign-in__item .item-input {
+    font-size: 1.6rem;
+    padding: 8px;
+    outline: none;
+    border: 1px solid #ccc;
+}
+
+.item-input:focus {
+    border-color: #009ffd;
+}
+
+.item-label {
+    position: absolute;
+    font-size: 1.6rem;
+    top: 50%;
+    left: 8px;
+    transform: translateY(-50%);
+    color: #999;
+    background-color: #fff;
+    padding: 0 4px;
+    transition: all ease .2s;
+    user-select: none;
+    pointer-events: none;
+}
+
+.item-input:not(:placeholder-shown)~.item-label,
+.item-input:focus~.item-label {
+    top: 0;
+    font-size: 1.2rem;
+}
+
+.text-no-account {
+    font-size: 1.2rem;
+}
