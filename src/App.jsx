@@ -3,6 +3,7 @@ import Body from './components/Body'
 import Footer from './components/Footer'
 import Header from './components/Header'
 import Slider from './components/Slider'
+import SignIn from './components/SignIn'
 
 function App() {
 
@@ -12,6 +13,7 @@ function App() {
       <Slider />
       <Body />
       <Footer />
+      {/* <SignIn /> */}
     </div>
   )
 }
