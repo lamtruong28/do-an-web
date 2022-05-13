@@ -1,12 +1,14 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import productSlice, { addProduct, fetchProducts } from '../../../redux/productSlice';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addProduct, editProduct, fetchProducts } from '../../../redux/productSlice';
+import { formSelector } from '../../../redux/selectors';
 import { toBase64 } from '../../../services';
 import { modalSlice } from '../../Modal/modalSlice';
-import './formAddProduct.css';
+import './formProduct.css';
 
 export default function () {
     const dispatch = useDispatch();
+    const { typeForm, dataPayload } = useSelector(formSelector);
     const [states, setStates] = useState({
         name: '',
         description: '',
@@ -14,6 +16,17 @@ export default function () {
         attachment: '',
     })
     const { name, description, price, attachment } = states;
+
+    useEffect(() => {
+        if (typeForm === 'edit')
+            setStates({
+                name: dataPayload.name,
+                description: dataPayload.description,
+                price: dataPayload.price,
+                attachment: dataPayload.attachment,
+            });
+    }, []);
+
     const handleChooseImage = async (e) => {
         const file = e.target.files[0];
         const base64 = await toBase64(file);
@@ -40,15 +53,25 @@ export default function () {
         dispatch(modalSlice.actions.closeModal());
         resetStates();
     }
-    const handleAddProduct = () => {
-        dispatch(addProduct(states));
+    const handleClickBtn = () => {
+        if (typeForm === 'addNew')
+            dispatch(addProduct(states));
+        else {
+            const payload = { id: dataPayload._id, ...states };
+            dispatch(editProduct(payload));
+            dispatch(fetchProducts());
+        }
         dispatch(modalSlice.actions.closeModal());
         resetStates();
     }
 
     return (
         <div className="form-add-product p-32 rounded" onClick={e => e.stopPropagation()}>
-            <h1 className='text-center mb-16'>Thêm sản phẩm</h1>
+            <h1 className='text-center mb-16'>
+                {
+                    typeForm == 'addNew' ? 'Thêm sản phẩm' : 'Sửa sản phẩm'
+                }
+            </h1>
             <div className="wrap rounded">
                 <div className="position-relative">
                     <input
@@ -96,7 +119,7 @@ export default function () {
                 }
                 <div className="mt-16">
                     <input onChange={handleChooseImage} type="file" id='open-directory' hidden />
-                    <label htmlFor='open-directory' className="btn btn-primary">Chọn hình</label>
+                    <label htmlFor='open-directory' className="btn btn-primary">{typeForm === 'addNew' ? 'Chọn hình' : 'Thay đổi hình'}</label>
                 </div>
             </div>
             <div className="control mt-8">
@@ -106,8 +129,8 @@ export default function () {
                 >Đóng</button>
                 <button
                     className='btn btn-primary ms-4'
-                    onClick={handleAddProduct}
-                >Thêm mới</button>
+                    onClick={handleClickBtn}
+                >{typeForm === 'addNew' ? 'Thêm mới' : 'Lưu'}</button>
             </div>
         </div >
     )
