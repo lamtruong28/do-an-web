@@ -1,3 +1,7 @@
+import Body from './components/Body'
+import Footer from './components/Footer'
+import Header from './components/Header'
+import Slider from './components/Slider'
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import SignUp from './components/Form/SignUp';
@@ -7,6 +11,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import AdminPage from './components/AdminPage';
 import Container from './components/Container';
 import Modal from './components/Modal';
+
 
 function App() {
 
