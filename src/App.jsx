@@ -1,19 +1,36 @@
-import './App.css'
-import Body from './components/Body'
-import Footer from './components/Footer'
-import Header from './components/Header'
-import SignIn from './components/SignIn'
-import Slider from './components/Slider'
+import './App.css';
+import { Routes, Route } from 'react-router-dom';
+import SignUp from './components/Form/SignUp';
+import SignIn from './components/Form/SignIn';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import AdminPage from './components/AdminPage';
+import Container from './components/Container';
+import Modal from './components/Modal';
 
 function App() {
 
   return (
     <div className="app">
-      <Header />
-      <Slider />
-      <Body />
-      <Footer />
-      <SignIn />
+      <Routes>
+        <Route path='/' >
+          <Route path='' element={<Container />} />
+          <Route path='sign-in' element={<SignIn />} />
+          <Route path='sign-up' element={<SignUp />} />
+          <Route path='admin' element={<AdminPage />} />
+        </Route>
+      </Routes>
+      <ToastContainer
+        position="top-right"
+        autoClose={2500}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable
+        pauseOnHover
+      />
     </div>
   )
 }

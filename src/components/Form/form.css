@@ -1,19 +1,23 @@
-.sign-in-wrapper {
-    min-height: 100vh;
+.form-wrapper {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     background-color: #2a2a72;
     background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+    z-index: 9999;
 }
 
-.sign-in-wrap {
-    min-height: 300px;
+.form-wrap {
     background-color: #fff;
 }
 
-.sign-in__item {
+.form__item {
     position: relative;
 }
 
-.sign-in__item .item-input {
+.form__item .item-input {
     font-size: 1.6rem;
     padding: 8px;
     outline: none;
@@ -46,4 +50,13 @@
 
 .text-no-account {
     font-size: 1.2rem;
+}
+
+.show-password {
+    position: absolute;
+    font-size: 1.4rem;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    cursor: pointer;
 }
