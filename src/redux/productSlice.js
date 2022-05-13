@@ -33,6 +33,11 @@ const productSlice = createSlice({
             .addCase(addProduct.rejected, (state, action) => {
                 state.status = 'idle';
             })
+            .addCase(editProduct.fulfilled, (state, action) => {
+                state.products = state.products.filter(product => product._id !== action.payload._id);
+                state.products.push(action.payload);
+                state.status = 'idle';
+            })
     }
 });
 
@@ -45,5 +50,13 @@ export const addProduct = createAsyncThunk('products/addProduct', async (payload
     return res.data
 });
 
+export const destroyProduct = createAsyncThunk('products/destroyPost', async (id) => {
+    await axios.post(`${URL_DB}/remove/${id}`);
+});
+
+export const editProduct = createAsyncThunk('products/editProduct', async ({ id, ...data }) => {
+    const res = await axios.post(`${URL_DB}/edit/${id}`, data);
+    return res.data;
+});
 
 export default productSlice;
