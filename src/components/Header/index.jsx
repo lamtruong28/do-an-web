@@ -5,6 +5,6 @@ export default function () {
     return (
         <header>
             <Link to='sign-in' className="btn btn-primary">Login</Link>
-        </header >
+        </header>
     )
 }
