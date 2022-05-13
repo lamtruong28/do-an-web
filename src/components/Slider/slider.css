@@ -22,4 +22,17 @@
     font-size: 10px !important;
 }
 
+.slick-arrow {
+    z-index: 1;
+}
+
+.slick-arrow:before {
+    font-size: 40px !important;
+    color: #c3938a !important;
+}
+
+.slick-disabled {
+    display: none !important;
+}
+
 
