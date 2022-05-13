@@ -1,27 +1,39 @@
 import { useState } from 'react';
-import { handleLogin } from '../../app/api';
-import './signIn.css';
+import { Link, useNavigate } from 'react-router-dom';
+import { handleLogin } from '../../../app/api';
+import '../form.css';
+import { toast } from 'react-toastify';
 
 export default function () {
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
+    const [showPass, setShowPass] = useState(false);
+    const navigate = useNavigate();
 
     const handleClickLogin = async (e) => {
         e.preventDefault();
         if (!userName && !password) return;
-        const user = await handleLogin({ userName, password });
-        console.log(user.userName)
-        if (user.userName)
-            alert('welcome')
+        const res = await handleLogin({ userName, password });
+        console.log(res)
+        if (res?._id) {
+            toast.success(`Welcome, ${res.userName}`);
+            if (res?.admin)
+                navigate('/admin');
+            else
+                navigate('/');
+        }
+        else {
+            toast.error(res.message);
+        }
     }
     return (
         <main>
-            <div className='sign-in-wrapper d-flex-center'>
-                <div className="sign-in-wrap w-50 rounded p-32">
+            <div className='form-wrapper d-flex-center'>
+                <div className="form-wrap w-50 rounded p-32">
                     <h2 className='fw-normal text-center mb-16'>Login</h2>
                     <p>Chào mừng bạn đến với cửa hàng của chúng tôi. Đăng nhập ngay để trải nghiệm.</p>
-                    <form className='sign-in-form'>
-                        <div className="sign-in__item mt-16">
+                    <form>
+                        <div className="form__item mt-16">
                             <input
                                 className='w-100 item-input rounded'
                                 type="text"
@@ -33,10 +45,10 @@ export default function () {
                             />
                             <span className='item-label rounded'>Tên đăng nhập *</span>
                         </div>
-                        <div className="sign-in__item mt-16">
+                        <div className="form__item mt-16">
                             <input
                                 className='w-100 item-input rounded'
-                                type="password"
+                                type={showPass ? 'text' : 'password'}
                                 name="password"
                                 required
                                 placeholder=' '
@@ -44,6 +56,11 @@ export default function () {
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                             <span className='item-label rounded'>Mật khẩu *</span>
+                            <span className='show-password' onClick={() => setShowPass(!showPass)}>
+                                {
+                                    !showPass ? <i className="fa-solid fa-eye"></i> : <i className="fa-solid fa-eye-slash"></i>
+                                }
+                            </span>
                         </div>
                         <button
                             className={(userName && password) ? 'mt-16 btn btn-primary' : 'mt-16 btn btn-primary disable'}
@@ -52,7 +69,7 @@ export default function () {
                         >Đăng nhập</button>
                     </form>
                     <hr className='mt-16 mb-16' />
-                    <p className='text-no-account'>Bạn chưa có tài khoản? <a href="#">Đăng ký</a></p>
+                    <p className='text-no-account'>Bạn chưa có tài khoản? <Link to='/sign-up'>Đăng ký</Link></p>
                 </div>
             </div>
         </main>
