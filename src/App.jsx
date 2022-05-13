@@ -2,6 +2,7 @@ import './App.css'
 import Body from './components/Body'
 import Footer from './components/Footer'
 import Header from './components/Header'
+import SignIn from './components/SignIn'
 import Slider from './components/Slider'
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <Slider />
       <Body />
       <Footer />
+      <SignIn />
     </div>
   )
 }
