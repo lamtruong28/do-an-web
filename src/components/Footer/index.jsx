@@ -47,36 +47,36 @@ export default function () {
                     <span>Chất Lượng</span>
 
                     <p>Shoes Store đảm bảo chất lượng cho tất cả
-                     sảm phẩm bán tại Store bằng chính sách bảo hành vĩnh viễn.</p>
+                     sản phẩm bán tại Store bằng chính sách bảo hành vĩnh viễn.</p>
 
                     <span>Phục Vụ</span>
 
-                    <p>Store cảm kết chất lượng phục vụ tốt nhất , chuyên nghiệp nhất cho 
+                    <p>Store cam kết chất lượng phục vụ tốt nhất , chuyên nghiệp nhất cho 
                     mọi khách hàng bằng chính sách hoàn tiền và tặng quà nếu nhân viên
-                    phục vụ quí khách không chu đáo</p>
+                    phục vụ quý khách không chu đáo.</p>
 
                     <span>Hỗ Trợ</span>
 
-                    <p>Nếu Bạn gặp rắc rối về sản phẩm hay chất lượng dịch vụ của Store , hay gọi ngay số
-                    0900 988 775</p>
+                    <p>Nếu Bạn gặp rắc rối về sản phẩm hay chất lượng dịch vụ của Store , hãy gọi ngay số
+                    0900 988 775.</p>
 
                 </div>
 
                 <div className='footer_content-information-c2'>
-                    <p>Đặt Hàng toàn quốc</p>
+                    <p>Đặt Hàng Toàn Quốc</p>
                     <p><i class="fa-solid fa-square-phone"></i> 1900 633 349</p>
                     <h3>Thông Tin</h3>
                     <ul>
-                        <li><i class="fa-solid fa-angle-right"></i> Gioi Thieu Ve Store</li>
+                        <li><i class="fa-solid fa-angle-right"></i> Giới thiệu về Store</li>
                         <li><i class="fa-solid fa-angle-right"></i> Tuyển dụng</li>
-                        <li><i class="fa-solid fa-angle-right"></i> Quy Chế Hoạt Động</li>
+                        <li><i class="fa-solid fa-angle-right"></i> Quy chế hoạt dộng</li>
                         <li><i class="fa-solid fa-angle-right"></i> Chính sách và quy định</li>
                     </ul>
                 </div>
 
                 <div className='footer_content-information-c3'>
                     <h3>CSKH</h3>
-                    <p>Góp ý / Chăm Sóc Khách hàng</p>
+                    <p>Góp ý / Chăm Sóc Khách Hàng</p>
 
                     <h3>FAQ</h3>
                     <ul>
