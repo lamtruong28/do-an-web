@@ -4,6 +4,10 @@ import logo from './img/main_logo.png';
 
 export default function () {
     return (
+<<<<<<< HEAD
+        <header>
+            <Link to='sign-in' className="btn btn-primary">Login</Link>
+=======
         <header class="header">
             <div class="container">
                 <nav class="header__navbar">
@@ -227,6 +231,7 @@ export default function () {
                     </div>
                 </div>
             </div>
+>>>>>>> master
         </header>
     )
 }
