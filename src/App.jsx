@@ -1,4 +1,3 @@
-import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import SignUp from './components/Form/SignUp';
 import SignIn from './components/Form/SignIn';
@@ -7,9 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import AdminPage from './components/AdminPage';
 import Container from './components/Container';
 
-
 function App() {
-
   return (
     <div className="app">
       <Routes>

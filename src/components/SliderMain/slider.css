@@ -1,22 +1,32 @@
-.slick-next{
+.Slider_images {
+    margin-top: var(--header-height);
+}
+
+.slick-next {
     right: 5px !important;
 }
 
-.slick-prev{
+.slick-prev {
     left: 5px !important;
-    
+
 }
 
-.slick-prev, .slick-next {
+.slick-prev,
+.slick-next {
     width: 40px !important;
     height: 40px !important;
 }
 
-.slick-prev:before, .slick-next:before{
+.slick-prev:before,
+.slick-next:before {
     font-size: 2.5rem !important;
 }
 
-.slick-dots li button:before{
+.slick-dots {
+    bottom: 10px !important;
+}
+
+.slick-dots li button:before {
     color: #ee4d2d !important;
     border-color: #ee4d2d;
     font-size: 10px !important;
@@ -34,5 +44,3 @@
 .slick-disabled {
     display: none !important;
 }
-
-
