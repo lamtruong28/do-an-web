@@ -1,27 +1,30 @@
-.form-add-product {
+.form-product {
     background-color: #fff;
     width: 500px;
+    max-height: 95vh;
+    overflow: auto;
 }
 
-.form-add-product .wrap {
+.form-product .wrap {
     border: 1px solid #ccc;
     padding: 16px;
 }
 
-.form-add-product textarea,
-.form-add-product input {
+.form-product textarea,
+.form-product input {
     font-size: 1.6rem;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-.form-add-product textarea {
-    max-height: 120px;
+.form-product textarea {
+    min-height: 80px;
+    max-height: 160px;
     max-width: 100%;
     min-width: 100%;
 }
 
-.form-add-product span {
+.form-product span {
     position: absolute;
     top: 50%;
     left: 8px;
@@ -33,26 +36,24 @@
     pointer-events: none;
 }
 
-.form-add-product .desc {
+.form-product .desc {
     top: 20px;
 }
 
-.form-add-product textarea:focus~span,
-.form-add-product textarea:not(:placeholder-shown)~span,
-.form-add-product input:not(:placeholder-shown)~span,
-.form-add-product input:focus~span {
+.form-product textarea:focus~span,
+.form-product textarea:not(:placeholder-shown)~span,
+.form-product input:not(:placeholder-shown)~span,
+.form-product input:focus~span {
     top: 0;
     font-size: 1.3rem;
 }
 
-.form-add-product .control {
+.form-product .control {
     text-align: end;
 }
 
 
 .attachment-wrap {
-    max-height: 200px;
-    overflow-y: auto;
     margin-right: -12px;
     padding-right: 5px;
     padding-top: 8px;

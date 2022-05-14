@@ -1,93 +1,49 @@
-main{
-    margin-right: auto;
-    margin-left: auto;
-    width: 1200px;
+.card {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    transition: all linear .2s;
 }
 
-.Content_header{
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    grid-gap: 0px 20px;
-    overflow: hidden;
-    margin-top: 60px;
-    
+.card:hover {
+    cursor: pointer;
+    transform: scale(1.05)
 }
 
-.Content_header_item{
+.card-header {
     width: 100%;
-    box-shadow: rgb(0 0 0 / 10%) 0px 0px 20px;
+    padding: 4px;
 }
 
-.Content_header_item , .Content_header_item_list{
-    position: relative;
-    margin: 10px;
-    height: max-content;
-    padding-bottom: 16px;
+.card-header img {
+    width: 100%;
 }
 
-.Content_header_item_list-c1 img {
-    display: block;
-    width : 100%;
-    height : 100%;
+.card-body {
+    padding: 4px 8px;
 }
 
-.Content_header_item_list{
-    display: block;
+.card-body .name {
+    font-size: 1.6rem;
+    font-weight: bold;
 }
 
-.Content_header_item_list-name-span{
-    padding: 8px 10px;
-    font-size: 14px;
+.card-body .desc {
+    font-size: 1.35rem;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     display: -webkit-box;
     overflow: hidden;
-    line-height: 28px;
+    line-height: 2.2rem;
 }
 
-.Content_header_item_list-price{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
+.price-wrap .price {
+    font-size: 1.5rem;
+    color: red;
+    font-weight: 500;
 }
 
-.Content_header_item_list-price-span{
-    display: block;
-    font-size: 14px;
-    padding: 0 10px;
+.price-wrap .sold {
+    font-size: 1.4rem;
+    font-weight: 500;
 }
 
-.Content_header_item_list-number-span{
-    display: block;
-    padding: 0 10px;
-}
-
-.Content_header_item-button{
-    /* position: absolute; */
-    width: 100%;
-    
-}
-
-.Content_header_item-button-card{
-    display: block;
-    margin: 16px 12px 12px 12px;
-}
-
-.Content_header_item-button-card-button:hover{
-    background-color: #8275fa;
-    color: #fff;
-    /* border-radius: 10px; */
-}
-
-.Content_header_item-button-card-button{
-    display: block;
-    font-size: 16px;
-    width: 100%;
-    height: 40px;
-    letter-spacing: 1px;
-    color: #000;
-    background-color: transparent;
-    border-radius: 10px ;
-    border: 3px solid #8275fa;
-}
+.card-footer {}

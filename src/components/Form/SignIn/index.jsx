@@ -14,9 +14,10 @@ export default function () {
         e.preventDefault();
         if (!userName && !password) return;
         const res = await handleLogin({ userName, password });
-        console.log(res)
         if (res?._id) {
             toast.success(`Welcome, ${res.userName}`);
+            setUserName('');
+            setPassword('');
             if (res?.admin)
                 navigate('/admin');
             else
@@ -40,6 +41,7 @@ export default function () {
                                 name="userName"
                                 placeholder=' '
                                 required
+                                autoFocus
                                 value={userName}
                                 onChange={(e) => setUserName(e.target.value)}
                             />

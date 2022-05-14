@@ -6,7 +6,6 @@
     left: 0;
     background: rgba(0, 0, 0, 0.3);
     animation: amimate linear .2s;
-    overflow: auto;
     z-index: 999;
 }
 
