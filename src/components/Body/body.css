@@ -1,16 +1,12 @@
-main{
-    margin-right: auto;
-    margin-left: auto;
-    width: 1200px;
-}
-
 .Content_header{
     display: grid;
     grid-template-columns: repeat(4,1fr);
     grid-gap: 0px 20px;
     overflow: hidden;
     margin-top: 60px;
-    
+    margin-right: auto;
+    margin-left: auto;
+    width: 1200px;
 }
 
 .Content_header_item{
