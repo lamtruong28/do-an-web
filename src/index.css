@@ -23,8 +23,16 @@ code {
 }
 
 :root {
-  --text-color: #333;
   --bg-primary: #eec0c6;
+  --white-color: #fff;
+  --black-color: #000;
+  --text-color: #333;
+  --primary-color: #ab1b1b;
+  --boder-color: #dbdbdb;
+
+  --header-height: 120px;
+  --navbar-height: 34px;
+  --header-with-search-height: calc(var(--header-height) - var(--navbar-height))
 }
 
 p,
@@ -398,37 +406,6 @@ input[type=number] {
   align-items: center;
 }
 
-.container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.container-fluid {
-  width: 100%;
-}
-
-@media (min-width: 768px) {
-  .container {
-    width: 750px;
-  }
-}
-
-@media (min-width: 992px) {
-  .container {
-    width: 970px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .container {
-    width: 1170px;
-  }
-}
-
-@media (min-width: 1400px) {
-  .container {
-    width: 1350px;
-  }
+.justify-content-between {
+  justify-content: space-between;
 }

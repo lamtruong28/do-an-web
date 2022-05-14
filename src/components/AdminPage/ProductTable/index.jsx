@@ -39,22 +39,32 @@ export default function () {
                         <table>
                             <thead>
                                 <tr>
-                                    <th className='text-center'>Name</th>
-                                    <th className='text-center'>Description</th>
-                                    <th className='text-center'>Price</th>
-                                    <th className='text-center'>Image</th>
-                                    <th className='text-center'>Action</th>
+                                    <th className='text-center stt'>STT</th>
+                                    <th className='text-center name'>Name</th>
+                                    <th className='text-center desc'>Description</th>
+                                    <th className='text-center price'>Price</th>
+                                    <th className='text-center promotion'>Promotion</th>
+                                    <th className='text-center img'>Image</th>
+                                    <th className='text-center action'>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {
-                                    products?.length > 0 && products.map(product => (
+                                    products?.length > 0 && products.map((product, index) => (
                                         <tr key={product?._id}>
-                                            <td>{product?.name}</td>
-                                            <td>{product?.description}</td>
-                                            <td>{product?.price}</td>
-                                            <td>{product?.image}</td>
-                                            <td className='text-center'>
+                                            <td className='stt text-center'>{index + 1}</td>
+                                            <td className='name'>{product?.name}</td>
+                                            <td className='desc'>{product?.description}</td>
+                                            <td className='price text-center'>{product?.price}</td>
+                                            <td className='promotion text-center'>{product?.promotion}</td>
+                                            <td className='img'>
+                                                <div style={{
+                                                    background: `url(${product?.attachment}) center / contain no-repeat`,
+                                                    padding: "30%"
+
+                                                }}></div>
+                                            </td>
+                                            <td className='text-center action'>
                                                 <button
                                                     className='btn btn-sm btn-outline-primary me-8'
                                                     onClick={() => handleEditProduct(product)}
@@ -62,7 +72,7 @@ export default function () {
                                                     <i className="fa-solid fa-pen-to-square"></i>
                                                 </button>
                                                 <button
-                                                    className='btn btn-sm btn-outline-danger me-8'
+                                                    className='btn btn-sm btn-outline-danger'
                                                     onClick={() => handleRomveProduct(product._id)}
                                                 >
                                                     <i className="fa-solid fa-trash-can"></i>

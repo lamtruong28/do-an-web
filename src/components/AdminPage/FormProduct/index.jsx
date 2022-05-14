@@ -13,9 +13,10 @@ export default function () {
         name: '',
         description: '',
         price: '',
+        promotion: '',
         attachment: '',
     })
-    const { name, description, price, attachment } = states;
+    const { name, description, price, promotion, attachment } = states;
 
     useEffect(() => {
         if (typeForm === 'edit')
@@ -41,6 +42,7 @@ export default function () {
             name: '',
             description: '',
             price: '',
+            promotion: '',
             attachment: '',
         })
     }
@@ -54,6 +56,7 @@ export default function () {
         resetStates();
     }
     const handleClickBtn = () => {
+        console.log(states)
         if (typeForm === 'addNew')
             dispatch(addProduct(states));
         else {
@@ -66,7 +69,7 @@ export default function () {
     }
 
     return (
-        <div className="form-add-product p-32 rounded" onClick={e => e.stopPropagation()}>
+        <div className="form-product p-32 rounded" onClick={e => e.stopPropagation()}>
             <h1 className='text-center mb-16'>
                 {
                     typeForm == 'addNew' ? 'Thêm sản phẩm' : 'Sửa sản phẩm'
@@ -82,7 +85,7 @@ export default function () {
                         value={name}
                         onChange={(e) => onchangeInput(e, 'name')}
                     />
-                    <span>Tên sản phẩm:</span>
+                    <span>Tên sản phẩm *</span>
                 </div>
                 <div className="position-relative mt-16">
                     <textarea
@@ -91,7 +94,7 @@ export default function () {
                         value={description}
                         onChange={(e) => onchangeInput(e, 'description')}
                     ></textarea>
-                    <span className='desc'>Mô tả sản phẩm:</span>
+                    <span className='desc'>Mô tả sản phẩm</span>
                 </div>
                 <div className="position-relative mt-16">
                     <input
@@ -101,7 +104,17 @@ export default function () {
                         value={price}
                         onChange={(e) => onchangeInput(e, 'price')}
                     />
-                    <span c>Giá:</span>
+                    <span c>Giá</span>
+                </div>
+                <div className="position-relative mt-16">
+                    <input
+                        className='w-100 p-8 price'
+                        type="number"
+                        placeholder=" "
+                        value={promotion}
+                        onChange={(e) => onchangeInput(e, 'promotion')}
+                    />
+                    <span>Giá khuyễn mãi (không bắt buộc)</span>
                 </div>
                 {
                     attachment &&
