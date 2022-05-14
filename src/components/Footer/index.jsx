@@ -89,6 +89,7 @@ export default function () {
             </div>
             <div className='footer_license'>
                 <p>© 2022 - Bản quyền thuộc về Nhóm Bán Giày</p>
+                <p>abctest</p>
             </div>
         </footer>
     )
