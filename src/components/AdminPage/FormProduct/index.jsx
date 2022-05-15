@@ -61,7 +61,8 @@ export default function () {
     const handleClickBtn = async () => {
         dispatch(modalSlice.actions.closeModal());
         if (typeForm === 'addNew') {
-            dispatch(addProduct(states));
+            const payload = { sold: 0, ...states };
+            dispatch(addProduct(payload));
         }
         else {
             const payload = { id: dataPayload.id, ...states };
