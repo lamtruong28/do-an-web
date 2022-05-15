@@ -104,6 +104,8 @@ export default function () {
                         <option hidden value="">----------Chọn----------</option>
                         <option className='p-8' value="male">Giày nam</option>
                         <option className='p-8' value="female">Giày Nữ</option>
+                        <option className='p-8' value="bag">Balo - Túi sách</option>
+                        <option className='p-8' value="accessory">Phụ kiện</option>
                     </select>
                 </div>
                 <div className="position-relative mt-16">
