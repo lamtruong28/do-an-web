@@ -27,6 +27,7 @@ export default function (){
                                 JD1 Low Paris Cổ Thấp Gót Xanh Thời Trang Hot Hit 2021
                                 </span>
                             </div>
+
                             <div className='Detail_product_list-item-content-c3'>
                                 <div className='Detail_product_list-item-content-start'>
                                     <p>4.8</p>
@@ -50,8 +51,56 @@ export default function (){
                                     </div>
                                 </div>
                             </div>
+
+                            <div className='Detail_product_list-item-content-c5'>
+                                <div className='Detail_product_list-item-content-table'>
+                                    <p>Màu Sắc</p>
+                                    <div className='Detail_product_list-item-content-table-button'>
+                                        <button>
+                                            Màu đen
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div className='Detail_product_list-item-content-size'>
+                                    <p>Size</p>
+                                    <div className='Detail_product_list-item-content-full_size'>
+                                        <button>37</button>
+                                        <button>38</button>
+                                        <button>39</button>
+                                        <button>40</button>
+                                        <button>41</button>
+                                        <button>42</button>
+                                        <button>43</button>
+                                        <button>Vớ</button>
+                                    </div>
+                                </div>
+
+                                <div className='Detail_product_list-item-content-number'>
+                                    <p>Số Lượng</p>
+                                    <div className='Detail_product_list-item-content-number-c2'>
+                                        <button> - </button>
+                                        <input value={1}/>
+                                        <button> + </button>
+                                    </div>
+                                </div>
+
+                                <div className=''>
+
+                                </div>
+                            </div>
+
+                            <div className='Detail_product_list-item-content-c6'>
+                                <button className='Detail_product_list-item-content-add'>
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                    <span>Thêm vào giỏ hàng</span>
+                                </button>
+                                <button className='Detail_product_list-item-content-buy'> Mua Ngay </button>
+                            </div>
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </div>

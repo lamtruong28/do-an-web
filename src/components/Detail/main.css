@@ -205,3 +205,156 @@
     text-decoration: line-through;
     color: #ccc;
 }
+
+.Detail_product_list-item-content-c5{
+    display: block;
+    margin-top: 20px;
+}
+
+.Detail_product_list-item-content-table{
+    display: flex;
+    width: 100%;
+    height: 30px;
+}
+
+.Detail_product_list-item-content-table p {
+    display: block;
+    color: #000;
+    margin-right: 20px;
+    font-size: 1.6rem;
+    line-height: 32px;
+}
+
+.Detail_product_list-item-content-table-button{
+    display: block;
+    font-size: 1.6rem;
+    line-height: 32px;
+}
+
+.Detail_product_list-item-content-table-button button{
+    display: block;
+    padding: 8px 20px;
+    font-size: 1.4rem;
+    margin-left: 10px;
+    background-color: #fff;
+    border-radius: 2px;
+    border: 1px solid #ddd;
+}
+
+.Detail_product_list-item-content-table-button button:hover{
+    display: block;
+    color: #ee4d2d;
+    border: 1px solid #ee4d2d;
+}
+
+/* size  */
+
+.Detail_product_list-item-content-size{
+    display: flex;
+    margin-top: 40px;
+}
+
+.Detail_product_list-item-content-size p {
+    display: block;
+    color: #000;
+    margin-right: 30px;
+    width: 10%;
+    padding-top: 6px;
+}
+
+.Detail_product_list-item-content-size button{
+    padding: 8px 30px;
+    margin: 4px 8px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    font-size: 1.4rem;
+} 
+
+.Detail_product_list-item-content-size button:hover{
+    background-color: #fff;
+    border: 1px solid #ee4d2d;
+}
+
+/* so luong  */
+
+.Detail_product_list-item-content-number{
+    display: flex;
+    margin-top: 20px;
+}
+
+.Detail_product_list-item-content-number p {
+    display: block;
+    font-size: 1.6rem;
+    height: 20px;
+    line-height: 20px;
+    margin-right: 25px;
+}
+
+.Detail_product_list-item-content-number-c2 {
+    display: block;
+    font-size: 1.6rem;
+}
+
+.Detail_product_list-item-content-number-c2 button{
+    padding: 4px 12px;
+    color: #000;
+    background-color: #fff;
+    border: 1px solid #ebebeb;
+    height: 100%;
+}
+
+.Detail_product_list-item-content-number-c2 input{
+    width: 20%;
+    height: 100%;
+    border: 1px solid #ebebeb;
+    text-align: center;
+}
+
+/* mua ngay  */
+
+.Detail_product_list-item-content-c6{
+    display: block;
+    margin-top: 40px;
+}
+
+.Detail_product_list-item-content-add{
+    width: 40%;
+    margin-right: 20px;
+    background-color: #ffeee8;
+    border-radius: 2px;
+    border: 1px solid #ee4d2d;
+    padding: 12px 20px;
+}
+
+.Detail_product_list-item-content-add:hover{
+    background-color: #fff5f1;
+}
+
+.Detail_product_list-item-content-add i{
+   color: #ee4d2d;
+   font-size: 1.8rem;
+   margin-right: 16px;
+}
+
+.Detail_product_list-item-content-add span{
+    color: #ee4d2d;
+}
+
+.Detail_product_list-item-content-buy{
+    width: 20%;
+    padding: 12px 20px;
+    color: #fff;
+    border-radius: 2px;
+    font-size: 1.6rem;
+    background-color: #ee4d2d;
+    border: 1px solid #ee4d2d;
+}
+
+.Detail_product_list-item-content-buy:hover{
+    background-color: #f05d40;
+    
+}
+
+
+
+
