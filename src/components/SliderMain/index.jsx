@@ -11,7 +11,7 @@ import images_5 from './images/image-5.webp';
 import images_6 from './images/image-6.webp';
 
 export default function () {
-    
+
     const UrlImage = [
         images,
         images_2,
@@ -19,42 +19,41 @@ export default function () {
         images_4,
         images_5,
         images_6
-    ] 
+    ]
 
     const settings = {
         dots: true,
         fade: true,
         infinite: true,
         speed: 500,
-        autoplaySpeed : 3000,
+        autoplaySpeed: 3000,
         autoplay: true,
         arrows: true,
         slidesToShow: 1,
         slidesToScroll: 1
-      };
+    };
 
     return (
         <section>
-            <div className='Slider_images'>
+            <div className='Slider_images pt-32 container'>
                 <div className='Slider_images-slick'>
 
                     <Slider {...settings}>
-                            {
-                                UrlImage.map((item,index) => {
-                                    return(
-                                        <div>
-                                            <div key={index} style={{
-                                                
-                                                background : `url(${item})
-                                                center/cover no-repeat
-                                                `,paddingTop : 300 ,
-
-                                            }}>
-                                            </div>
+                        {
+                            UrlImage.map((item, index) => {
+                                return (
+                                    <div key={index}>
+                                        <div style={{
+                                            background: `url(${item}) center/cover no-repeat `,
+                                            paddingTop: 300,
+                                        }}
+                                            className='rounded'
+                                        >
                                         </div>
-                                    )
-                                })
-                            }
+                                    </div>
+                                )
+                            })
+                        }
                     </Slider>
 
                 </div>

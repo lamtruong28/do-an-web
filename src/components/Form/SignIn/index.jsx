@@ -1,29 +1,42 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { handleLogin } from '../../../app/api';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchUsers, handleLogin } from '../../../redux/userSlice';
 import '../form.css';
 import { toast } from 'react-toastify';
+import userSlice from '../../../redux/userSlice';
+import { userSelector } from '../../../redux/selectors';
 
 export default function () {
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const [showPass, setShowPass] = useState(false);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const { users } = useSelector(userSelector);
+
+    useEffect(() => {
+        dispatch(fetchUsers());
+    }, [])
 
     const handleClickLogin = async (e) => {
         e.preventDefault();
         if (!userName && !password) return;
-        const res = await handleLogin({ userName, password });
-        console.log(res)
-        if (res?._id) {
-            toast.success(`Welcome, ${res.userName}`);
-            if (res?.admin)
+        const user = handleLogin({ users, userName, password });
+        console.log({ user })
+        if (user) {
+            toast.success(`Welcome, ${user.userName}`);
+            setUserName('');
+            setPassword('');
+            if (user?.admin)
                 navigate('/admin');
-            else
+            else {
+                dispatch(userSlice.actions.setData({ userId: user?.id }));
                 navigate('/');
+            }
         }
         else {
-            toast.error(res.message);
+            toast.error('Tài khoản hoặc mật khẩu không chính xác!');
         }
     }
     return (
@@ -40,6 +53,7 @@ export default function () {
                                 name="userName"
                                 placeholder=' '
                                 required
+                                autoFocus
                                 value={userName}
                                 onChange={(e) => setUserName(e.target.value)}
                             />

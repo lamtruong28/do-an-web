@@ -1,14 +1,14 @@
 import Body from '../Body';
 import Detail from '../Detail';
-import Slider from '../Slider';
 import Footer from '../Footer';
 import Header from '../Header';
+import SliderMain from '../SliderMain';
 
 export default function () {
     return (
         <main>
             <Header />
-            <Slider />
+            <SliderMain />
             <Body />
             <Footer />
             <Detail />

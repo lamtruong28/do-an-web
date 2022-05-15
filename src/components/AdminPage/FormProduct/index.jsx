@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProduct, editProduct, fetchProducts } from '../../../redux/productSlice';
 import { formSelector } from '../../../redux/selectors';
@@ -13,9 +13,11 @@ export default function () {
         name: '',
         description: '',
         price: '',
+        promotion: '',
         attachment: '',
+        type: '',
     })
-    const { name, description, price, attachment } = states;
+    const { name, description, price, promotion, attachment, type } = states;
 
     useEffect(() => {
         if (typeForm === 'edit')
@@ -24,25 +26,28 @@ export default function () {
                 description: dataPayload.description,
                 price: dataPayload.price,
                 attachment: dataPayload.attachment,
+                type: dataPayload.type,
             });
     }, []);
 
     const handleChooseImage = async (e) => {
         const file = e.target.files[0];
         const base64 = await toBase64(file);
-        console.log(base64);
         setStates({
             ...states,
             attachment: base64,
         })
     }
+
     const resetStates = () => {
         setStates({
             name: '',
             description: '',
             price: '',
+            promotion: '',
             attachment: '',
-        })
+            type: '',
+        });
     }
     const onchangeInput = (e, payload) => {
         const coppy = { ...states };
@@ -53,23 +58,24 @@ export default function () {
         dispatch(modalSlice.actions.closeModal());
         resetStates();
     }
-    const handleClickBtn = () => {
-        if (typeForm === 'addNew')
+    const handleClickBtn = async () => {
+        dispatch(modalSlice.actions.closeModal());
+        if (typeForm === 'addNew') {
             dispatch(addProduct(states));
+        }
         else {
-            const payload = { id: dataPayload._id, ...states };
-            dispatch(editProduct(payload));
+            const payload = { id: dataPayload.id, ...states };
+            await dispatch(editProduct(payload));
             dispatch(fetchProducts());
         }
-        dispatch(modalSlice.actions.closeModal());
         resetStates();
     }
 
     return (
-        <div className="form-add-product p-32 rounded" onClick={e => e.stopPropagation()}>
+        <div className="form-product p-32 rounded" onClick={e => e.stopPropagation()}>
             <h1 className='text-center mb-16'>
                 {
-                    typeForm == 'addNew' ? 'Thêm sản phẩm' : 'Sửa sản phẩm'
+                    typeForm === 'addNew' ? 'Thêm sản phẩm' : 'Sửa sản phẩm'
                 }
             </h1>
             <div className="wrap rounded">
@@ -82,7 +88,7 @@ export default function () {
                         value={name}
                         onChange={(e) => onchangeInput(e, 'name')}
                     />
-                    <span>Tên sản phẩm:</span>
+                    <span>Tên sản phẩm *</span>
                 </div>
                 <div className="position-relative mt-16">
                     <textarea
@@ -91,7 +97,16 @@ export default function () {
                         value={description}
                         onChange={(e) => onchangeInput(e, 'description')}
                     ></textarea>
-                    <span className='desc'>Mô tả sản phẩm:</span>
+                    <span className='desc'>Mô tả sản phẩm</span>
+                </div>
+                <div className="position-relative mt-16">
+                    <select onChange={(e) => onchangeInput(e, 'type')} value={type} className={type !== '' ? 'w-100 p-8 choice active' : 'w-100 p-8 choice'}>
+                        <option hidden value="">----------Chọn----------</option>
+                        <option className='p-8' value="male">Giày nam</option>
+                        <option className='p-8' value="female">Giày Nữ</option>
+                        <option className='p-8' value="bag">Balo - Túi sách</option>
+                        <option className='p-8' value="accessory">Phụ kiện</option>
+                    </select>
                 </div>
                 <div className="position-relative mt-16">
                     <input
@@ -101,7 +116,17 @@ export default function () {
                         value={price}
                         onChange={(e) => onchangeInput(e, 'price')}
                     />
-                    <span c>Giá:</span>
+                    <span>Giá</span>
+                </div>
+                <div className="position-relative mt-16">
+                    <input
+                        className='w-100 p-8 price'
+                        type="number"
+                        placeholder=" "
+                        value={promotion}
+                        onChange={(e) => onchangeInput(e, 'promotion')}
+                    />
+                    <span>Giá khuyễn mãi (không bắt buộc)</span>
                 </div>
                 {
                     attachment &&
