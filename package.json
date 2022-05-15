@@ -10,13 +10,16 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
     "axios": "^0.27.2",
+    "bcryptjs": "^2.4.3",
+    "miragejs": "^0.1.44",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-redux": "^8.0.1",
     "react-router-dom": "^6.3.0",
     "react-slick": "^0.29.0",
     "react-toastify": "^9.0.1",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.0",

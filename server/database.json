@@ -1,0 +1,11 @@
+{
+  "users": [
+    {
+      "userName": "admin",
+      "password": "$2a$10$DBxSko3ZLsXE4cjbYihOpekCcOQHBYXG.I7gsKvNicZPsEdmiClvy",
+      "admin": true,
+      "id": 1
+    }
+  ],
+  "products": []
+}

@@ -1,6 +1,7 @@
 .card {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
     transition: all linear .2s;
+    min-height: 409px;
 }
 
 .card:hover {
@@ -20,10 +21,12 @@
     height: 100%;
     object-fit: cover;
     vertical-align: middle;
+    box-shadow: 0 0 5px #ddd;
 }
 
 .card-body {
     padding: 4px 8px;
+    min-height: 130px;
 }
 
 .card-body .name {

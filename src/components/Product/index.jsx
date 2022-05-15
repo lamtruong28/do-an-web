@@ -17,7 +17,7 @@ export default function ({ product }) {
                         </span>
                         {
                             product?.promotion &&
-                            <span span className='promotion'>
+                            <span className='promotion'>
                                 {product.promotion}<sup>đ</sup>
                             </span>
                         }

@@ -1,8 +1,12 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { userSelector } from '../../redux/selectors';
 import { Link } from 'react-router-dom';
 import './header.css';
 import logo from './img/main_logo.png';
 
 export default function () {
+    const dispatch = useDispatch();
+    const { userId } = useSelector(userSelector);
     return (
         <header className="header">
             <div className="container">
@@ -195,18 +199,21 @@ export default function () {
                                 Thông Báo
                             </a>
                         </li>
-
-                        <li className="header__navbar-item header__navbar--separate">
-                            <a href="" className="header__navbar-item-link header__navbar--separate">Đăng Ký</a>
-                        </li>
-
                         <li className="header__navbar-item">
                             <a href="" className="header__navbar-icon-link">
-                                <i className="header__navbar-icon fa-solid fa-user"></i>
+                                {
+                                    userId ?
+                                        <i className="header__navbar-icon fa-solid fa-arrow-right-from-bracket"></i>
+                                        :
+                                        <i className="header__navbar-icon fa-solid fa-user"></i>
+                                }
                             </a>
-                            <a href="" className="header__navbar-item-link">
-                                Đăng Nhập
-                            </a>
+                            <Link to="sign-in" className="header__navbar-item-link ms-4">
+                                {
+                                    userId ? 'Đăng xuât' : 'Đăng nhập'
+                                }
+                            </Link>
+
                         </li>
                     </ul>
                 </nav>
