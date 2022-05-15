@@ -57,7 +57,12 @@ export default function () {
                                             <td className='name'>{product?.name}</td>
                                             <td className='desc'>{product?.description}</td>
                                             <td className='type'>
-                                                {product?.type === 'male' && 'Giày nam' || product?.type === 'female' && 'Giày nữ' || ''}
+                                                {
+                                                    product?.type === 'male' && 'Giày nam' ||
+                                                    product?.type === 'female' && 'Giày nữ' ||
+                                                    product?.type === 'bag' && 'Balo - Túi sách' ||
+                                                    product?.type === 'accessory' && "Phụ kiện" || ''
+                                                }
                                             </td>
                                             <td className='price text-center'>{product?.price}</td>
                                             <td className='promotion text-center'>{product?.promotion}</td>

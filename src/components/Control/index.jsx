@@ -61,6 +61,36 @@ export default function () {
                     htmlFor="female"
                 >Giày nữ</label>
             </div>
+            <div className="bag me-8">
+                <input
+                    checked={type === 'bag'}
+                    value='bag'
+                    id="bag"
+                    type="radio"
+                    name="control"
+                    onChange={handleChoice}
+                />
+                <label
+                    className="ms-4"
+                    style={styles}
+                    htmlFor="bag"
+                >Balo - Túi sách</label>
+            </div>
+            <div className="accessory me-8">
+                <input
+                    checked={type === 'accessory'}
+                    value='accessory'
+                    id="accessory"
+                    type="radio"
+                    name="control"
+                    onChange={handleChoice}
+                />
+                <label
+                    className="ms-4"
+                    style={styles}
+                    htmlFor="accessory"
+                >Phụ kiện</label>
+            </div>
         </div>
     )
 }
