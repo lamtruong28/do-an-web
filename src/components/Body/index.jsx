@@ -8,6 +8,7 @@ import Spinner from '../Spinner';
 import Pagination from "../Pagination";
 import { SIZE_PAGE } from "../../redux/paginationSlice";
 import Control from "../Control";
+import Detail from "../Detail";
 
 export default function () {
     const dispatch = useDispatch();
@@ -33,6 +34,7 @@ export default function () {
                     </div>
             }
             <Pagination total={Math.ceil(products?.length / SIZE_PAGE)} />
+            {/* <Modal><Detail /></Modal> */}
         </main>
     )
 }

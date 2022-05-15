@@ -1,33 +1,30 @@
-import './main.css';
+import './detail.css';
 import Detail_images from './images-detail/detail_1.jpg'
 
 
-export default function (){
+export default function () {
 
     const Detail_list = [
         Detail_images
     ]
 
-    return(
+    return (
         <div className='Detail_product'>
             <div className='Detail_product_list'>
                 <div className='Detail_product_list-item'>
                     <div className='Detail_product_list-item-images'>
                         <div className='Detail_product_list-item-images-c1'>
-                            <img className='Detail_product_list-item-images-sup' src={Detail_images} alt = 'shoe' />
+                            <img className='Detail_product_list-item-images-sup' src={Detail_images} alt='shoe' />
                         </div>
                     </div>
-
                     <div className='nav-sup'></div>
-
                     <div className='Detail_product_list-item-content'>
                         <div className='Detail_product_list-item-content-padding'>
                             <div className='Detail_product_list-item-content-c2'>
                                 <span>Giày Jordan 1 Low Paris Trắng Xám,
-                                JD1 Low Paris Cổ Thấp Gót Xanh Thời Trang Hot Hit 2021
+                                    JD1 Low Paris Cổ Thấp Gót Xanh Thời Trang Hot Hit 2021
                                 </span>
                             </div>
-
                             <div className='Detail_product_list-item-content-c3'>
                                 <div className='Detail_product_list-item-content-start'>
                                     <p>4.8</p>
@@ -41,7 +38,6 @@ export default function (){
                                     <span>Đã Bán</span>
                                 </div>
                             </div>
-
                             <div className='Detail_product_list-item-content-c4'>
                                 <div className='Detail_product_list-item-content-price'>
                                     <div className='Detail_product_list-item-content-price-cost'>
@@ -51,7 +47,6 @@ export default function (){
                                     </div>
                                 </div>
                             </div>
-
                             <div className='Detail_product_list-item-content-c5'>
                                 <div className='Detail_product_list-item-content-table'>
                                     <p>Màu Sắc</p>
@@ -61,7 +56,6 @@ export default function (){
                                         </button>
                                     </div>
                                 </div>
-
                                 <div className='Detail_product_list-item-content-size'>
                                     <p>Size</p>
                                     <div className='Detail_product_list-item-content-full_size'>
@@ -75,21 +69,17 @@ export default function (){
                                         <button>Vớ</button>
                                     </div>
                                 </div>
-
                                 <div className='Detail_product_list-item-content-number'>
                                     <p>Số Lượng</p>
                                     <div className='Detail_product_list-item-content-number-c2'>
                                         <button> - </button>
-                                        <input value={1}/>
+                                        <input value={1} />
                                         <button> + </button>
                                     </div>
                                 </div>
-
                                 <div className=''>
-
                                 </div>
                             </div>
-
                             <div className='Detail_product_list-item-content-c6'>
                                 <button className='Detail_product_list-item-content-add'>
                                     <i class="fa-solid fa-cart-plus"></i>
@@ -99,8 +89,6 @@ export default function (){
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
