@@ -16,10 +16,10 @@ export default function () {
         dispatch(fetchProducts());
     }, []);
 
-    const handleRomveProduct = (id) => {
+    const handleRomveProduct = async (id) => {
         const result = confirm("Bạn có chắc chắn muốn xóa sản phẩm?");
         if (result) {
-            dispatch(destroyProduct(id));
+            await dispatch(destroyProduct(id));
             dispatch(fetchProducts());
         }
     }
@@ -42,6 +42,7 @@ export default function () {
                                     <th className='text-center stt'>STT</th>
                                     <th className='text-center name'>Name</th>
                                     <th className='text-center desc'>Description</th>
+                                    <th className='text-center desc'>Danh mục</th>
                                     <th className='text-center price'>Price</th>
                                     <th className='text-center promotion'>Promotion</th>
                                     <th className='text-center img'>Image</th>
@@ -51,16 +52,21 @@ export default function () {
                             <tbody>
                                 {
                                     products?.length > 0 && products.map((product, index) => (
-                                        <tr key={product?._id}>
+                                        <tr key={product?.id}>
                                             <td className='stt text-center'>{index + 1}</td>
                                             <td className='name'>{product?.name}</td>
                                             <td className='desc'>{product?.description}</td>
+                                            <td className='type'>
+                                                {product?.type === 'male' && 'Giày nam' || product?.type === 'female' && 'Giày nữ' || ''}
+                                            </td>
                                             <td className='price text-center'>{product?.price}</td>
                                             <td className='promotion text-center'>{product?.promotion}</td>
                                             <td className='img'>
                                                 <div style={{
-                                                    background: `url(${product?.attachment}) center / contain no-repeat`,
-                                                    padding: "30%"
+                                                    background: `url(${product?.attachment}) center / cover no-repeat`,
+                                                    width: 100,
+                                                    height: 100,
+                                                    margin: '0 auto',
 
                                                 }}></div>
                                             </td>
@@ -73,7 +79,7 @@ export default function () {
                                                 </button>
                                                 <button
                                                     className='btn btn-sm btn-outline-danger'
-                                                    onClick={() => handleRomveProduct(product._id)}
+                                                    onClick={() => handleRomveProduct(product.id)}
                                                 >
                                                     <i className="fa-solid fa-trash-can"></i>
                                                 </button>

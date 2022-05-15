@@ -42,14 +42,13 @@ export default function () {
                         {
                             UrlImage.map((item, index) => {
                                 return (
-                                    <div>
-                                        <div key={index} style={{
-
-                                            background: `url(${item})
-                                                center/cover no-repeat
-                                                `, paddingTop: 300,
-
-                                        }}>
+                                    <div key={index}>
+                                        <div style={{
+                                            background: `url(${item}) center/cover no-repeat `,
+                                            paddingTop: 300,
+                                        }}
+                                            className='rounded'
+                                        >
                                         </div>
                                     </div>
                                 )

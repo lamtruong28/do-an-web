@@ -1,42 +1,60 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios';
-const URL_DB = 'http://localhost:8080/api/products';
+const URL_DB = 'http://localhost:8080/products';
 
 const productSlice = createSlice({
     name: 'products',
     initialState: {
         status: 'idle',
-        products: []
+        products: [],
+        type: 'all',
+        error: false,
     },
     reducers: {
-
+        setType: (state, action) => {
+            state.type = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder
             .addCase(fetchProducts.pending, (state, action) => {
                 state.status = 'loading';
+                state.error = false;
             })
             .addCase(fetchProducts.fulfilled, (state, action) => {
-                state.products = action.payload;
+                state.products = action.payload.filter(product => state.type === 'all' ? product : product.type === state.type);
                 state.status = 'idle';
+                state.error = false;
             })
             .addCase(fetchProducts.rejected, (state, action) => {
                 state.status = 'idle';
+                state.error = true;
             })
             .addCase(addProduct.pending, (state, action) => {
                 state.status = 'loading';
+                state.error = false;
             })
             .addCase(addProduct.fulfilled, (state, action) => {
                 state.products.push(action.payload);
                 state.status = 'idle';
+                state.error = false;
             })
             .addCase(addProduct.rejected, (state, action) => {
                 state.status = 'idle';
+                state.error = true;
+
+            })
+            .addCase(editProduct.pending, (state, action) => {
+                state.status = 'loading';
+                state.error = false;
             })
             .addCase(editProduct.fulfilled, (state, action) => {
-                state.products = state.products.filter(product => product._id !== action.payload._id);
-                state.products.push(action.payload);
                 state.status = 'idle';
+                state.error = false;
+            })
+            .addCase(editProduct.rejected, (state, action) => {
+                state.status = 'idle';
+                state.error = true;
             })
     }
 });
@@ -46,16 +64,16 @@ export const fetchProducts = createAsyncThunk('products/fetchProducts', async ()
     return res.data
 });
 export const addProduct = createAsyncThunk('products/addProduct', async (payload) => {
-    const res = await axios.post(`${URL_DB}/add-new`, payload);
+    const res = await axios.post(`${URL_DB}`, payload);
     return res.data
 });
 
 export const destroyProduct = createAsyncThunk('products/destroyPost', async (id) => {
-    await axios.post(`${URL_DB}/remove/${id}`);
+    await axios.delete(`${URL_DB}/${id}`);
 });
 
 export const editProduct = createAsyncThunk('products/editProduct', async ({ id, ...data }) => {
-    const res = await axios.post(`${URL_DB}/edit/${id}`, data);
+    const res = await axios.put(`${URL_DB}/${id}`, data);
     return res.data;
 });
 

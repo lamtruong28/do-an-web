@@ -1,20 +1,53 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { checkSymbol } from '../../../services';
+import { Link, useNavigate } from 'react-router-dom';
 import '../form.css';
+import { toast } from 'react-toastify';
+import { useDispatch, useSelector } from 'react-redux';
+import { addNewUser, checkEistsUser } from '../../../redux/userSlice';
+import { toEnglish } from '../../../services';
+import { userSelector } from '../../../redux/selectors';
+import bcrypt from 'bcryptjs';
+const salt = bcrypt.genSaltSync(10)
 
 export default function () {
-    const [userName, setUserName] = useState('');
-    const [password, setPassword] = useState('');
-    const [verifyPass, setVerifyPass] = useState('');
+    const [states, setStates] = useState({
+        userName: '',
+        password: '',
+        verifyPass: '',
+    })
     const [showPass, setShowPass] = useState(false);
     const [showVerifyPass, setShowVerifyPass] = useState(false);
+    const dispatch = useDispatch();
+    const { users } = useSelector(userSelector);
+    const { userName, password, verifyPass } = states;
+    const navigate = useNavigate();
+
+    const handleChangeInput = (e, payload) => {
+        const copy = { ...states };
+        copy[payload] = toEnglish(e.target.value);
+        setStates(copy);
+    }
     const handleClickSignUp = async (e) => {
         e.preventDefault();
         if (!userName && !password && !verifyPass) return;
-        console.log({ userName, password, verifyPass })
-
+        if (password.length < 6) {
+            toast.error("Độ dài ký tự phải lớn hơn 5 ký tự!");
+            return;
+        }
+        if (password !== verifyPass) {
+            toast.error("Xác nhận mật khẩu không chính xác! Vui lòng kiểm tra lại.");
+            return;
+        }
+        if (checkEistsUser({ users, userName })) {
+            toast.error("Người dùng đã tồn tại trên hệ thống! Vui lòng chọn tên khác.");
+        } else {
+            const passwordHash = bcrypt.hashSync(password, salt);
+            dispatch(addNewUser({ userName, password: passwordHash }));
+            toast.success("Đăng ký tài khoản thành công! Mời đăng nhập.");
+            navigate('/sign-in');
+        }
     }
+
     return (
         <main>
             <div className='form-wrapper d-flex-center'>
@@ -24,13 +57,14 @@ export default function () {
                     <form>
                         <div className="form__item mt-16">
                             <input
+                                autoFocus
                                 className='w-100 item-input rounded'
                                 type="text"
                                 name="userName"
                                 placeholder=' '
                                 required
                                 value={userName}
-                                onChange={(e) => setUserName(e.target.value)}
+                                onChange={(e) => handleChangeInput(e, 'userName')}
                             />
                             <span className='item-label rounded'>Tên đăng nhập *</span>
                         </div>
@@ -42,7 +76,7 @@ export default function () {
                                 required
                                 placeholder=' '
                                 value={password}
-                                onChange={(e) => setPassword(e.target.value)}
+                                onChange={(e) => handleChangeInput(e, 'password')}
                             />
                             <span className='item-label rounded'>Mật khẩu *</span>
                             <span className='show-password' onClick={() => setShowPass(!showPass)}>
@@ -55,13 +89,11 @@ export default function () {
                             <input
                                 className='w-100 item-input rounded'
                                 type={showVerifyPass ? 'text' : 'password'}
-                                name="password"
+                                name="verifyPass"
                                 required
                                 placeholder=' '
                                 value={verifyPass}
-                                // onChange={(e) => setVerifyPass(checkSymbol(e.target.value))}
-                                onChange={(e) => console.log(e.target.value)}
-                                onKeyDown={(e) => checkSymbol(e)}
+                                onChange={(e) => handleChangeInput(e, 'verifyPass')}
                             />
                             <span className='item-label rounded'>Xác nhận mật khẩu *</span>
                             <span className='show-password' onClick={() => setShowVerifyPass(!showVerifyPass)}>
@@ -71,7 +103,7 @@ export default function () {
                             </span>
                         </div>
                         <button
-                            className={(userName && password) ? 'mt-16 btn btn-primary' : 'mt-16 btn btn-primary disable'}
+                            className={(userName && password && verifyPass) ? 'mt-16 btn btn-primary' : 'mt-16 btn btn-primary disable'}
                             type='submit'
                             onClick={handleClickSignUp}
                         >Đăng ký</button>

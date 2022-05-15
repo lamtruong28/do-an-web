@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProduct, editProduct, fetchProducts } from '../../../redux/productSlice';
 import { formSelector } from '../../../redux/selectors';
@@ -15,8 +15,9 @@ export default function () {
         price: '',
         promotion: '',
         attachment: '',
+        type: '',
     })
-    const { name, description, price, promotion, attachment } = states;
+    const { name, description, price, promotion, attachment, type } = states;
 
     useEffect(() => {
         if (typeForm === 'edit')
@@ -25,18 +26,19 @@ export default function () {
                 description: dataPayload.description,
                 price: dataPayload.price,
                 attachment: dataPayload.attachment,
+                type: dataPayload.type,
             });
     }, []);
 
     const handleChooseImage = async (e) => {
         const file = e.target.files[0];
         const base64 = await toBase64(file);
-        console.log(base64);
         setStates({
             ...states,
             attachment: base64,
         })
     }
+
     const resetStates = () => {
         setStates({
             name: '',
@@ -44,7 +46,8 @@ export default function () {
             price: '',
             promotion: '',
             attachment: '',
-        })
+            type: '',
+        });
     }
     const onchangeInput = (e, payload) => {
         const coppy = { ...states };
@@ -55,16 +58,16 @@ export default function () {
         dispatch(modalSlice.actions.closeModal());
         resetStates();
     }
-    const handleClickBtn = () => {
-        console.log(states)
-        if (typeForm === 'addNew')
+    const handleClickBtn = async () => {
+        dispatch(modalSlice.actions.closeModal());
+        if (typeForm === 'addNew') {
             dispatch(addProduct(states));
+        }
         else {
-            const payload = { id: dataPayload._id, ...states };
-            dispatch(editProduct(payload));
+            const payload = { id: dataPayload.id, ...states };
+            await dispatch(editProduct(payload));
             dispatch(fetchProducts());
         }
-        dispatch(modalSlice.actions.closeModal());
         resetStates();
     }
 
@@ -72,7 +75,7 @@ export default function () {
         <div className="form-product p-32 rounded" onClick={e => e.stopPropagation()}>
             <h1 className='text-center mb-16'>
                 {
-                    typeForm == 'addNew' ? 'Thêm sản phẩm' : 'Sửa sản phẩm'
+                    typeForm === 'addNew' ? 'Thêm sản phẩm' : 'Sửa sản phẩm'
                 }
             </h1>
             <div className="wrap rounded">
@@ -97,6 +100,13 @@ export default function () {
                     <span className='desc'>Mô tả sản phẩm</span>
                 </div>
                 <div className="position-relative mt-16">
+                    <select onChange={(e) => onchangeInput(e, 'type')} value={type} className={type !== '' ? 'w-100 p-8 choice active' : 'w-100 p-8 choice'}>
+                        <option hidden value="">----------Chọn----------</option>
+                        <option className='p-8' value="male">Giày nam</option>
+                        <option className='p-8' value="female">Giày Nữ</option>
+                    </select>
+                </div>
+                <div className="position-relative mt-16">
                     <input
                         className='w-100 p-8 price'
                         type="number"
@@ -104,7 +114,7 @@ export default function () {
                         value={price}
                         onChange={(e) => onchangeInput(e, 'price')}
                     />
-                    <span c>Giá</span>
+                    <span>Giá</span>
                 </div>
                 <div className="position-relative mt-16">
                     <input
